@@ -10,13 +10,15 @@ from pipeline_prefect import (
     flow_install,
 )
 
+REPO_URL = "https://github.com/maryem172002/ml_project.git"
+
 if __name__ == "__main__":
     serve(
         flow_all.to_deployment(
             name="ml-pipeline-all",
             cron="0 2 * * *",  # tous les jours à 02:00
             tags=["full-pipeline", "mlops"],
-            # parameters={"repo_url": "https://github.com/<user>/<repo>.git"},
+            parameters={"repo_url": REPO_URL},
         ),
         flow_train.to_deployment(name="ml-pipeline-train", tags=["training", "mlops"]),
         flow_evaluate.to_deployment(
