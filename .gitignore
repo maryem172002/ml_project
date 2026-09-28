@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.joblib
+*.log
+projet_clone/
+.pytest_cache/
+mlruns/
